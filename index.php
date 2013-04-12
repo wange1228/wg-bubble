@@ -4,13 +4,13 @@ Plugin Name: 万戈牌气泡屏保
 Plugin URI: http://wange.im/wg-bubble.html
 Description: 给你的 WordPress 加个彩蛋，模拟 Windows 气泡屏幕保护，支持 IE9 / Chrome / Firefox / Opera 等浏览器，可配置等待时间、气泡半径以及气泡数量。不求好用，但求好玩 :-)
 Author: 万戈
-Version: 1.0
+Version: 1.1
 Author URI: http://wange.im
 */
 
 $wg_bubble = '万戈牌气泡屏保';
 $wb = 'wg_bubble';
-$wb_version = '1.0';
+$wb_version = '1.1';
 $wait_arr = array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);       // 等待时间选项
 $radius_arr = array(10, 20, 30, 40, 50, 60, 70, 80, 90, 100);       // 气泡半径选项
 $num_arr = array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15);       // 气泡数量选项
@@ -103,7 +103,7 @@ function wange_bubble() {
     $wb_num = get_option('wg_bubble_num') ? get_option('wg_bubble_num') : $num_default;
     $wb_radius = get_option('wg_bubble_radius') ? get_option('wg_bubble_radius') : $radius_default;
     
-    echo '<script type="text/javascript">var wangeBubble = {wait: ' . $wb_wait . ', num: ' . $wb_num . ', radius: ' . $wb_radius . '}</script>';
+    echo '<script type="text/javascript">window.addEventListener && window.addEventListener("load", function() {new Bubble().init({wait: ' . $wb_wait . ', num: ' . $wb_num . ', radius: ' . $wb_radius . '})});</script>';
     wp_enqueue_script('wg-bubble', plugins_url('wg-bubble') . '/bubble.js', false, $wb_version, true);
 }
 add_action('wp_footer', 'wange_bubble');
