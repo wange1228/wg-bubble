@@ -3,8 +3,9 @@
         // 默认参数
         this.config = {
             wait: 60000,             // 等待时间，默认1分钟
-            num: 10,                 // 气泡数量，默认10个
             radius: 90,              // 气泡半径，默认90px
+            avatar: [],              // 头像数组 {src: '', url: '', name: ''}
+            speed: 6,                // 速度
             callback: function() {}  // 显示气泡后回调
         };
         this.cache = {};
@@ -61,6 +62,7 @@
             _this.cache.bubbles = [];
             _this.cache.bubblesNum = 0;
             _this.cache.toWait = _this.config.wait;
+            _this.cache.avatar = _this.config.avatar.concat();
             
             clearTimeout(_this.cache.startSTO);
             clearTimeout(_this.cache.createSTO);
@@ -71,8 +73,8 @@
                 cvs.style.display = 'block';
                 cvs.style.top = scrollTop + 'px';
                 
-                _this.createBubble(0);
-                _this.animateBubble();
+                _this.createBubble();
+                _this.animateBubble(cvs);
                 _this.config.callback.apply(_this);
             }, _this.cache.toWait);
         },
@@ -92,64 +94,39 @@
             cvs.setAttribute('height', this.cvsHeight);
         },
         // 生成气泡
-        createBubble: function(zIndex) {
+        createBubble: function() {
             var _this = this,
-                radius = _this.config.radius;
+                radius = _this.config.radius,
+                speed = _this.config.speed,
+                avatar = _this.cache.avatar,
+                avatarArr = avatar.shift(),
+                avatarNum = avatar.length;
+                
+            _this.cache.bubblesNum++;
             
             // 气泡初始化
             _this.cache.bubbles.push({
-                x: radius,                          // x 坐标
-                y: _this.cvsHeight - radius,        // y 坐标
-                zIndex: zIndex,                     // 层级
-                vX: Math.random() * 8,              // 左右速度
-                vY: Math.random() * 8 - 4,          // 上下速度
-                color: {                            // 颜色
-                    r: Math.floor(Math.random()*255),
-                    g: Math.floor(Math.random()*255),
-                    b: Math.floor(Math.random()*255)
-                },
-                increase: {                         // 颜色值递增
-                    r: true,
-                    g: true,
-                    b: true
-                }
+                x: radius,                                   // x 坐标
+                y: _this.cvsHeight - radius,                 // y 坐标
+                zIndex: avatarNum,                           // 层级
+                vX: Math.random() * speed,                   // 左右速度
+                vY: Math.random() * speed - speed/2,         // 上下速度
+                src: avatarArr.src,                          // 图片地址
+                url: avatarArr.url,                          // 图片链接
+                name: avatarArr.name                         // 图片名称
             });
             
+            _this.cache.reverseBubbles = _this.cache.bubbles.concat().reverse();
+            
             // 每隔600ms生成一个气泡
-            if (++_this.cache.bubblesNum !== _this.config.num) {
+            if (avatarNum !== 0) {
                 _this.cache.createSTO = setTimeout(function() {
-                    _this.createBubble(_this.cache.bubblesNum);
+                    _this.createBubble();
                 }, 600);
             }
         },
-        // 改变气泡颜色
-        changeColor: function(tmpBubble) {
-            var rgb = ['r', 'g', 'b'][Math.floor(Math.random() * 3)];
-            
-            if (tmpBubble.increase[rgb]) {
-                if (tmpBubble.color[rgb] < 0) {
-                    tmpBubble.color[rgb] = 0;
-                    tmpBubble.increase[rgb] = true;
-                } else if (tmpBubble.color[rgb] >= 255) {
-                    tmpBubble.color[rgb] = 254;
-                    tmpBubble.increase[rgb] = false;
-                } else {
-                    ++tmpBubble.color[rgb];
-                }
-            } else {
-                if (tmpBubble.color[rgb] <= 0) {
-                    tmpBubble.color[rgb] = 1;
-                    tmpBubble.increase[rgb] = true;
-                } else if (tmpBubble.color[rgb] > 255) {
-                    tmpBubble.color[rgb] = 255;
-                    tmpBubble.increase[rgb] = false;
-                } else {
-                    --tmpBubble.color[rgb];
-                }
-            }
-        },
         // 气泡动画
-        animateBubble: function() {
+        animateBubble: function(cvs) {
             var _this = this,
                 ctx = _this.ctx,
                 radius = _this.config.radius,
@@ -157,12 +134,15 @@
                 bubbles = _this.cache.bubbles;
                 
             ctx.clearRect(0, 0, _this.cvsWidth, _this.cvsHeight);
+            _this.setCursor(_this.cache.clientX, _this.cache.clientY, cvs);
             
             for (var i=0; i<num; i++) {
                 var tmpBubble = bubbles[i];
+                
                 for (var j=i+1; j<num; j++) {
                     var tmpBubbleB = bubbles[j],
                         randomZ = Math.round(Math.random());
+                        
                     // 层级一样时才进行碰撞检测
                     if (tmpBubble.zIndex === tmpBubbleB.zIndex) {
                         var dX = tmpBubbleB.x - tmpBubble.x,
@@ -218,37 +198,96 @@
                     tmpBubble.vY *= -1;
                 }
                 
-                _this.changeColor(tmpBubble);
-                var grd = ctx.createLinearGradient(tmpBubble.x, tmpBubble.y - radius, tmpBubble.x, tmpBubble.y + radius);
-                grd.addColorStop(0, 'rgba(' + tmpBubble.color.r + ', ' + tmpBubble.color.g + ', ' + tmpBubble.color.b + ', 0.8)');
-                grd.addColorStop(1, 'rgba(' + tmpBubble.color.b + ', ' + tmpBubble.color.g + ', ' + tmpBubble.color.r + ', 0.8)');
+                var img = new Image();
+                img.src = tmpBubble.src;
                 
-                ctx.fillStyle = grd;
-                // ctx.shadowBlur = 2 * radius;
+                // 径向渐变，在 firefox 下太卡，忍痛删之
+                // var grd = ctx.createLinearGradient(tmpBubble.x, tmpBubble.y - radius, tmpBubble.x, tmpBubble.y + radius);
+                // grd.addColorStop(0, '#000');
+                // grd.addColorStop(1, '#fff');
+                
+                ctx.fillStyle = '#000';
+                ctx.globalAlpha = 0.9;
+                ctx.strokeStyle = '#fff';
+                ctx.textBaseline = 'middle';
+                ctx.textAlign = 'center';
+                ctx.font = '700 ' + radius * 0.3 + 'px "Microsoft YaHei",SimSun';
+                
+                // 阴影，在 firefox 下太卡，忍痛删之
                 // ctx.shadowColor = '#000';
-                // ctx.shadowOffsetX = 0.4 * radius;
-                // ctx.shadowOffsetY = 0.18 * radius;
+                // ctx.shadowBlur = radius * 0.055;
+                // ctx.shadowOffsetX = radius * 0.055;
+                // ctx.shadowOffsetY = radius * 0.055;
+                ctx.save();
                 ctx.beginPath();
                 ctx.arc(tmpBubble.x, tmpBubble.y, radius, 0, Math.PI * 2, false);
-                ctx.closePath();
                 ctx.fill();
+                ctx.clip();
+                ctx.globalCompositeOperation = 'source-atop';
+                ctx.save();
+                ctx.scale(radius * 2 / img.width, radius * 2 / img.height);
+                ctx.drawImage(img, (tmpBubble.x - radius) / (radius * 2 / img.width), (tmpBubble.y - radius) / (radius * 2 / img.height));
+                //ctx.drawImage(img, tmpBubble.x - radius, tmpBubble.y - radius);
+                ctx.restore();
+                ctx.globalCompositeOperation = 'source-over';
+                ctx.fillText(tmpBubble.name, tmpBubble.x, tmpBubble.y);
+                ctx.strokeText(tmpBubble.name, tmpBubble.x, tmpBubble.y);
+                ctx.restore();
+                ctx.closePath();
             }
             
             _this.cache.animateSTO = setTimeout(function() {
-                _this.animateBubble();
+                _this.animateBubble(cvs);
             }, 20);
+        },
+        // 判断当前坐标是否在气泡中
+        inBubble: function(x, y) {
+            var _this = this,
+                bubbles = _this.cache.reverseBubbles || [];
+                
+            for (var i=0, l=bubbles.length; i<l; i++) {
+                var dx = bubbles[i].x - x,
+                    dy = bubbles[i].y - y,
+                    distance = Math.sqrt(dx*dx + dy*dy);
+                    
+                if (distance <= _this.config.radius) {
+                    _this.cache.curBubble = bubbles[i];
+                    return true;
+                }
+            }
+            
+            return false;
+        },
+        // 设置鼠标样式
+        setCursor: function(x, y, cvs) {
+            var cursor = '';
+            if (this.inBubble(x, y)) {
+                cursor = 'pointer';
+            } else {
+                cursor = 'default';
+            }
+            cvs.style.cursor = cursor;
         },
         // 事件绑定
         bind: function(cvs) {
             var _this = this,
                 body = doc.body;
-            body.addEventListener('mousemove', function() {
-                _this.restart(cvs);
+            body.addEventListener('mousemove', function(ev) {
+                var x = _this.cache.clientX = ev.clientX,
+                    y = _this.cache.clientY = ev.clientY;
+                    
+                _this.setCursor(x, y, cvs);
+            });
+            body.addEventListener('mousedown', function(ev) {
+                var x = ev.clientX,
+                    y = ev.clientY;
+                if (_this.inBubble(x, y)) {
+                    win.location.href = _this.cache.curBubble.url;
+                } else {
+                    _this.restart(cvs);
+                }
             });
             body.addEventListener('keydown', function() {
-                _this.restart(cvs);
-            });
-            body.addEventListener('mousedown', function() {
                 _this.restart(cvs);
             });
             win.addEventListener('scroll', function() {

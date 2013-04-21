@@ -2,13 +2,25 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8" />
-    <script type="text/javascript" src="bubble.js"></script>
+    <script type="text/javascript" src="bubble.source.js"></script>
     <script type="text/javascript">
-        window.addEventListener && window.addEventListener('load', function() {
+        window.addEventListener && window.addEventListener('load', function (ev) {
             new Bubble().init({
-                wait: 300,
-                num: 10,
-                radius: 90
+                wait : 300,
+                radius : 70,
+                speed: 6,
+                avatar : [
+                    {
+                        src : 'http://www.gravatar.com/avatar/e41d06048fe9d04f0811c966842abcd6?s=140',
+                        url : 'http://wange.im',
+                        name : '万戈'
+                    },
+                    {
+                        src: 'http://i0.kym-cdn.com/photos/images/original/000/096/044/trollface.jpg',
+                        url: '',
+                        name: ''
+                    }
+                ]
             });
         });
     </script>
