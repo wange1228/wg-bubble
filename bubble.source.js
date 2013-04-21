@@ -60,6 +60,7 @@
         start: function(cvs) {
             var _this = this;
             _this.cache.bubbles = [];
+            _this.cache.imgs = [];
             _this.cache.bubblesNum = 0;
             _this.cache.toWait = _this.config.wait;
             _this.cache.avatar = _this.config.avatar.concat();
@@ -198,8 +199,14 @@
                     tmpBubble.vY *= -1;
                 }
                 
-                var img = new Image();
-                img.src = tmpBubble.src;
+                var img;
+                if (_this.cache.imgs[i]) {
+                    img = _this.cache.imgs[i];
+                } else {
+                    img = new Image();
+                    img.src = tmpBubble.src;
+                    _this.cache.imgs.push(img);
+                }
                 
                 // 径向渐变，在 firefox 下太卡，忍痛删之
                 // var grd = ctx.createLinearGradient(tmpBubble.x, tmpBubble.y - radius, tmpBubble.x, tmpBubble.y + radius);
