@@ -4,30 +4,42 @@
  @url https://github.com/wange1228/wg-bubble
  @author WanGe
  @blog http://wange.im
- @version 2.1
+ @version 2.2
 */
 
-(function(win, doc) {
-  win.Bubble = function() {
+var Bubble;
+
+Bubble = (function() {
+  var doc, win;
+
+  win = window;
+
+  doc = document;
+
+  function Bubble() {
     this.config = {
       wait: 60000,
       radius: 90,
       avatar: [],
       speed: 6,
-      callback: function() {}
+      callback: function() {
+        console.log('@name wg-bubble' + '\n' + '@url https://github.com/wange1228/wg-bubble' + '\n' + '@author WanGe' + '\n' + '@blog http://wange.im' + '\n' + '@version 2.2');
+      }
     };
     this.cache = {};
-  };
-  win.Bubble.initialized = false;
-  win.Bubble.prototype.init = function(params) {
+  }
+
+  Bubble.initialized = false;
+
+  Bubble.prototype.init = function(params) {
     var config, cvs, cvsEl, i, styleEl, styles, _this;
     if (params == null) {
       params = this.config;
     }
-    if (win.Bubble.initialized) {
+    if (Bubble.initialized) {
       return null;
     }
-    win.Bubble.initialized = true;
+    Bubble.initialized = true;
     _this = this;
     config = _this.config;
     for (i in params) {
@@ -53,7 +65,8 @@
       _this.bind(cvs);
     }
   };
-  win.Bubble.prototype.start = function(cvs) {
+
+  Bubble.prototype.start = function(cvs) {
     var _this;
     _this = this;
     _this.cache.bubbles = [];
@@ -74,14 +87,16 @@
       _this.config.callback.apply(_this);
     }, _this.cache.toWait);
   };
-  win.Bubble.prototype.restart = function(cvs) {
+
+  Bubble.prototype.restart = function(cvs) {
     var _this;
     _this = this;
     cvs.style.display = 'none';
     _this.ctx.clearRect(0, 0, _this.cvsWidth, _this.cvsHeight);
     _this.start(cvs);
   };
-  win.Bubble.prototype.fullCvs = function(cvs) {
+
+  Bubble.prototype.fullCvs = function(cvs) {
     var _this;
     _this = this;
     _this.cvsWidth = doc.body.offsetWidth;
@@ -89,7 +104,8 @@
     cvs.setAttribute('width', _this.cvsWidth);
     cvs.setAttribute('height', _this.cvsHeight);
   };
-  win.Bubble.prototype.createBubble = function() {
+
+  Bubble.prototype.createBubble = function() {
     var avatar, avatarArr, avatarNum, radius, speed, _this;
     _this = this;
     radius = _this.config.radius;
@@ -115,7 +131,8 @@
       }, 600);
     }
   };
-  win.Bubble.prototype.animateBubble = function(cvs) {
+
+  Bubble.prototype.animateBubble = function(cvs) {
     var angle, bubbles, cosine, ctx, dX, dY, distance, i, img, j, num, radius, randomZ, sine, tmpBubble, tmpBubbleB, vX, vXb, vY, vYb, x, xB, y, yB, _i, _j, _ref, _this;
     _this = this;
     ctx = _this.ctx;
@@ -210,7 +227,8 @@
       _this.animateBubble(cvs);
     }, 20);
   };
-  win.Bubble.prototype.inBubble = function(x, y) {
+
+  Bubble.prototype.inBubble = function(x, y) {
     var bubbles, distance, dx, dy, i, _i, _ref, _this;
     _this = this;
     bubbles = _this.cache.reverseBubbles || [];
@@ -225,7 +243,8 @@
     }
     return false;
   };
-  win.Bubble.prototype.setCursor = function(x, y, cvs) {
+
+  Bubble.prototype.setCursor = function(x, y, cvs) {
     var cursor;
     if (this.inBubble(x, y)) {
       cursor = 'pointer';
@@ -234,7 +253,8 @@
     }
     cvs.style.cursor = cursor;
   };
-  win.Bubble.prototype.bind = function(cvs) {
+
+  Bubble.prototype.bind = function(cvs) {
     var body, _this;
     _this = this;
     body = doc.body;
@@ -265,4 +285,7 @@
       _this.restart(cvs);
     });
   };
-})(window, document);
+
+  return Bubble;
+
+})();

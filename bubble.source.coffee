@@ -3,26 +3,33 @@
  @url https://github.com/wange1228/wg-bubble
  @author WanGe
  @blog http://wange.im
- @version 2.1
+ @version 2.2
 ###
-((win, doc) ->
-    win.Bubble = ->
+class Bubble
+    win = window
+    doc = document
+    constructor: ->
         @config = 
             wait: 60000             # 等待时间，默认1分钟
             radius: 90              # 气泡半径，默认90px
             avatar: []              # 头像数组 {src: '', url: '', name: ''}
             speed: 6                # 速度
             callback: ->            # 显示气泡后回调
+                console.log '@name wg-bubble' + '\n' +
+                            '@url https://github.com/wange1228/wg-bubble' + '\n' +
+                            '@author WanGe' + '\n' +
+                            '@blog http://wange.im' + '\n' +
+                            '@version 2.2'
+                return
         @cache = {}
-        return
-    win.Bubble.initialized = false
+    @initialized = false
     
     # 初始化
-    win.Bubble::init = (params = this.config) ->
+    init: (params = @config) ->
         # 如果已初始化过，则返回
-        if win.Bubble.initialized
+        if Bubble.initialized
             return null
-        win.Bubble.initialized = true
+        Bubble.initialized = true
         
         _this = this
         config = _this.config
@@ -56,13 +63,13 @@
         return
         
     # 动画开始
-    win.Bubble::start = (cvs) ->
+    start: (cvs) ->
         _this = this
         _this.cache.bubbles = []
         _this.cache.imgs = []
         _this.cache.bubblesNum = 0
         _this.cache.toWait = _this.config.wait
-        _this.cache.avatar = do _this.config.avatar.concat
+        _this.cache.avatar = _this.config.avatar.concat()
         
         clearTimeout _this.cache.startSTO
         clearTimeout _this.cache.createSTO
@@ -72,7 +79,7 @@
             scrollTop = doc.body.scrollTop || doc.documentElement.scrollTop
             cvs.style.display = 'block'
             cvs.style.top = scrollTop + 'px'
-            do _this.createBubble
+            _this.createBubble()
             _this.animateBubble cvs
             _this.config.callback.apply _this
             return
@@ -81,7 +88,7 @@
         return
         
     # 重新开始
-    win.Bubble::restart = (cvs) ->
+    restart: (cvs) ->
         _this = this
         cvs.style.display = 'none'
         _this.ctx.clearRect 0, 0, _this.cvsWidth, _this.cvsHeight
@@ -89,7 +96,7 @@
         return
         
     # 全屏画布
-    win.Bubble::fullCvs = (cvs) ->
+    fullCvs: (cvs) ->
         _this = this
         _this.cvsWidth = doc.body.offsetWidth
         _this.cvsHeight = doc.body.offsetHeight
@@ -99,12 +106,12 @@
         return
         
     # 生成气泡
-    win.Bubble::createBubble = ->
+    createBubble: ->
         _this = this
         radius = _this.config.radius
         speed = _this.config.speed
         avatar = _this.cache.avatar
-        avatarArr = do avatar.shift
+        avatarArr = avatar.shift()
         avatarNum = avatar.length
             
         _this.cache.bubblesNum++
@@ -126,14 +133,13 @@
         # 每隔600ms生成一个气泡
         if avatarNum isnt 0
             _this.cache.createSTO = setTimeout ->
-                do _this.createBubble
+                _this.createBubble()
                 return
             , 600
-        
         return
         
     # 气泡动画
-    win.Bubble::animateBubble = (cvs) ->
+    animateBubble: (cvs) ->
         _this = this
         ctx = _this.ctx
         radius = _this.config.radius
@@ -248,11 +254,10 @@
             _this.animateBubble cvs
             return
         , 20
-    
         return
         
     # 判断当前坐标是否在气泡中
-    win.Bubble::inBubble = (x, y) ->
+    inBubble: (x, y) ->
         _this = this
         bubbles = _this.cache.reverseBubbles || []
             
@@ -264,11 +269,10 @@
             if distance <= _this.config.radius
                 _this.cache.curBubble = bubbles[i]
                 return true
-            
         return false
         
     # 设置鼠标样式
-    win.Bubble::setCursor = (x, y, cvs) ->
+    setCursor: (x, y, cvs) ->
         if this.inBubble x, y
             cursor = 'pointer'
         else
@@ -277,7 +281,7 @@
         return
         
     # 事件绑定
-    win.Bubble::bind = (cvs) ->
+    bind: (cvs) ->
         _this = this
         body = doc.body
         
@@ -310,5 +314,3 @@
             _this.restart cvs
             return
         return
-    return
-)(window, document)
