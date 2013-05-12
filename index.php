@@ -108,7 +108,7 @@ function wange_bubble() {
            $date_default,
            $wb_version;
            
-    $wb_wait = get_option('wg_bubble_wait') ? get_option('wg_bubble_wait') * 1000 * 60 : $wait_default;
+    $wb_wait = get_option('wg_bubble_wait') ? get_option('wg_bubble_wait') * 1000 * 60 : $wait_default * 1000 * 60;
     $wb_num = get_option('wg_bubble_num') ? get_option('wg_bubble_num') : $num_default;
     $wb_radius = get_option('wg_bubble_radius') ? get_option('wg_bubble_radius') : $radius_default;
     $wb_cmt_date = get_option('wg_bubble_date') ? get_option('wg_bubble_date') : $date_default;
