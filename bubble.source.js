@@ -23,7 +23,7 @@ Bubble = (function() {
       avatar: [],
       speed: 6,
       callback: function() {
-        console.log('@name wg-bubble' + '\n' + '@url https://github.com/wange1228/wg-bubble' + '\n' + '@author WanGe' + '\n' + '@blog http://wange.im' + '\n' + '@version 2.2');
+        win.console && console.log('@name wg-bubble' + '\n' + '@url https://github.com/wange1228/wg-bubble' + '\n' + '@author WanGe' + '\n' + '@blog http://wange.im' + '\n' + '@version 2.3');
       }
     };
     this.cache = {};

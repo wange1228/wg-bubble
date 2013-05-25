@@ -15,11 +15,11 @@ class Bubble
             avatar: []              # 头像数组 {src: '', url: '', name: ''}
             speed: 6                # 速度
             callback: ->            # 显示气泡后回调
-                console.log '@name wg-bubble' + '\n' +
-                            '@url https://github.com/wange1228/wg-bubble' + '\n' +
-                            '@author WanGe' + '\n' +
-                            '@blog http://wange.im' + '\n' +
-                            '@version 2.2'
+                win.console && console.log '@name wg-bubble' + '\n' +
+                                           '@url https://github.com/wange1228/wg-bubble' + '\n' +
+                                           '@author WanGe' + '\n' +
+                                           '@blog http://wange.im' + '\n' +
+                                           '@version 2.3'
                 return
         @cache = {}
     @initialized = false
