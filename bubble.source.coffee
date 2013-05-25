@@ -3,7 +3,7 @@
  @url https://github.com/wange1228/wg-bubble
  @author WanGe
  @blog http://wange.im
- @version 2.2
+ @version 2.3
 ###
 class Bubble
     win = window
@@ -295,7 +295,7 @@ class Bubble
         body.addEventListener 'mousedown', (ev) ->
             x = ev.clientX
             y = ev.clientY
-            if _this.inBubble x, y
+            if _this.inBubble(x, y) && _this.cache.bubbles.length isnt 0
                 win.location.href = _this.cache.curBubble.url
             else
                 _this.restart cvs
