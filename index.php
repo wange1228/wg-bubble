@@ -153,8 +153,8 @@ function wange_bubble() {
         $output =  '<script type="text/javascript">' . "\n" .
                    '      window.addEventListener && window.addEventListener("load", function() {' . "\n" .
                    '           window.Bubble && new Bubble().init({' . "\n" .
-                   '              wait: ' . $wait . ',' . "\n" .
-                   '              radius: ' . $radius . ',' . "\n" .
+                   '              wait: ' . $wb_wait . ',' . "\n" .
+                   '              radius: ' . $wb_radius . ',' . "\n" .
                    '              avatar: ' . $avatar . "\n" .
                    '           });' . "\n" .
                    '      });' . "\n" .
