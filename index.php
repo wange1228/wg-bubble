@@ -69,7 +69,7 @@ function wg_bubble_admin() {
             <table class="form-table" >
                 <?php 
                 foreach ($wb_options as $value) { 
-                    if ($value['type'] == "select") { ?>
+                    if ($value['type'] == 'select') { ?>
                         <tr> 
                             <th><strong><?php echo $value['name']; ?>:</strong></th>
                             <td>
@@ -140,29 +140,29 @@ function wange_bubble() {
     $counts = count($results);
 
     if ( $counts !== 0) {
-        $output = '';
-        if ( $results ) : foreach ($results as $key => $count) :
-            $prefix = '{';
-            $suffix = $key !== $counts - 1 ? '},' : '}';
-            $output .= $prefix.
-                       '    src: "http://www.gravatar.com/avatar/' . md5(strtolower( $count->comment_author_email )) . '?s=' . $wb_radius*2 . '",' .
-                       '    url: "' .$count->comment_author_url . '",' .
-                       '    name: "' . $count->comment_author . '"' .
-                       $suffix;
-        endforeach; endif;
+        $avatar_arr = array();
+        foreach ($results as $result) {
+            $avatar_arr[] = array(
+                                'src' => 'http://www.gravatar.com/avatar/' . md5(strtolower($result->comment_author_email)) . '?s=' . $radius     * 2,
+                                'url' => $result->comment_author_url,
+                                'name' => $result->comment_author
+                            );
+        }
+        
+        $avatar = json_encode($avatar_arr);
+        $output =  '<script type="text/javascript">' . "\n" .
+                   '      window.addEventListener && window.addEventListener("load", function() {' . "\n" .
+                   '           window.Bubble && new Bubble().init({' . "\n" .
+                   '              wait: ' . $wait . ',' . "\n" .
+                   '              radius: ' . $radius . ',' . "\n" .
+                   '              avatar: ' . $avatar . "\n" .
+                   '           });' . "\n" .
+                   '      });' . "\n" .
+                   '</script>' . "\n";
+        
+        return $output;
 
-        echo '<script type="text/javascript">'.
-             'window.addEventListener && window.addEventListener("load", function() {' .
-             '    new Bubble().init({' .
-             '        wait: ' . $wb_wait . ',' .
-             '        radius: ' . $wb_radius . ',' .
-             '        avatar: [' .
-                            $output .
-             '        ]' .
-             '    });' .
-             '});' .
-             '</script>';
-        wp_enqueue_script('wg-bubble', plugins_url('wg-bubble') . '/bubble.js', false, $wb_version, true);
+        wp_enqueue_script('wg-bubble', plugins_url('wg-bubble') . '/bubble.js', FALSE, $wb_version, TRUE);
     }
 }
 add_action('wp_footer', 'wange_bubble');

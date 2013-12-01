@@ -1,1 +1,285 @@
-eval(function(p,a,c,k,e,r){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)r[e(c)]=k[c]||e(c);k=[function(e){return r[e]}];e=function(){return'\\w+'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('o k;k=(f(){o d,W;W=2o;d=2p;f k(){s.A={1R:2h,8:2m,13:[],I:6,1M:f(){2j.2k(\'@V 1u-1J\'+\'\\n\'+\'@17 2q://2s.2v/34/1u-1J\'+\'\\n\'+\'@3g 24\'+\'\\n\'+\'@25 28://29.2a\'+\'\\n\'+\'@2f 2.2\')}};s.7={}}k.1h=1i;k.B.2n=f(a){o b,D,Q,i,J,1a,4;m(a==1A){a=s.A}m(k.1h){1b 1A}k.1h=1y;4=s;b=4.A;1d(i 2e a){b[i]=a[i]||b[i]}Q=d.1w(\'2g\');J=d.1w(\'X\');1a=\'2i,E{1e:1x%;1c:1x%;1z:0;1B:0;}\'+\'#1C{1j:1F;1z:0;1B:0;2t:2u;1G:0;2x:0;z-2z:2T;}\';Q.1I=\'1C\';J.39=\'3a/3c\';m(J.1N){J.1N.23=1a}L{J.1p(d.26(1a))}d.E.1p(Q);d.E.1p(J);D=d.27(Q.1I);m(D&&D.1Z){4.e=D.1Z(\'2d\');4.1g(D);4.1o(D);4.1v(D)}};k.B.1o=f(b){o c;c=s;c.7.C=[];c.7.Z=[];c.7.1k=0;c.7.1Y=c.A.1R;c.7.13=c.A.13.22();1t(c.7.1X);1t(c.7.1Q);1t(c.7.1P);c.7.1X=1m(f(){o a;a=d.E.1O||d.2r.1O;b.X.1j=\'3n\';b.X.1G=a+\'1K\';c.1q();c.1r(b);c.A.1M.2w(c)},c.7.1Y)};k.B.R=f(a){o b;b=s;a.X.1j=\'1F\';b.e.1H(0,0,b.N,b.G);b.1o(a)};k.B.1g=f(a){o b;b=s;b.N=d.E.2Z;b.G=d.E.30;a.1E(\'1e\',b.N);a.1E(\'1c\',b.G)};k.B.1q=f(){o a,O,18,8,I,4;4=s;8=4.A.8;I=4.A.I;a=4.7.13;O=a.3b();18=a.1l;4.7.1k++;4.7.C.1D({x:8,y:4.G-8,U:18,l:v.1s()*I,p:v.1s()*I-I/2,Y:O.Y,17:O.17,V:O.V});4.7.1L=4.7.C.22().2b();m(18!==0){4.7.1Q=1m(f(){4.1q()},2c)}};k.B.1r=f(a){o b,C,h,e,F,H,M,i,t,j,w,8,19,g,5,q,l,S,p,15,x,P,y,14,r,K,u,4;4=s;e=4.e;8=4.A.8;w=4.7.1k;C=4.7.C;e.1H(0,0,4.N,4.G);4.1n(4.7.12,4.7.11,a);1d(i=r=0;0<=w?r<w:r>w;i=0<=w?++r:--r){5=C[i];1d(j=K=u=i+1;u<=w?K<w:K>w;j=u<=w?++K:--K){q=C[j];19=v.2y(v.1s());m(5.U===q.U){F=q.x-5.x;H=q.y-5.y;M=v.1S(F*F+H*H);m(M<2*8){b=v.2A(H,F);g=v.2B(b);h=v.2C(b);x=0;y=0;P=F*h+H*g;14=H*h-F*g;l=5.l*h+5.p*g;p=5.p*h-5.l*g;S=q.l*h+q.p*g;15=q.p*h-q.l*g;l*=-1;S*=-1;P=x+2*8;5.x=5.x+(x*h-y*g);5.y=5.y+(y*h+x*g);q.x=5.x+(P*h-14*g);q.y=5.y+(14*h+P*g);5.l=l*h-p*g;5.p=p*h+l*g;q.l=S*h-15*g;q.p=15*h+S*g}}}5.x+=5.l;5.y+=5.p;m(5.x-8<0){5.x=8;5.l*=-1}L m(5.x+8>4.N){5.x=4.N-8;5.l*=-1;5.U=19}m(5.y-8<0){5.y=8;5.p*=-1;5.U=19}L m(5.y+8>4.G){5.y=4.G-8;5.p*=-1}m(4.7.Z[i]){t=4.7.Z[i]}L{t=2D 2E();t.Y=5.Y;4.7.Z.1D(t)}e.2F=\'#2G\';e.2H=0.9;e.2I=\'#2J\';e.2K=\'2L\';e.2M=\'2N\';e.2O=\'2P \'+8*0.3+\'1K "2Q 2R",2S\';e.1T();e.2U();e.2V(5.x,5.y,8,0,v.2W*2,1i);e.2X();e.2Y();e.1U=\'1V-31\';e.1T();e.32(8*2/t.1e,8*2/t.1c);e.33(t,(5.x-8)/(8*2/t.1e),(5.y-8)/(8*2/t.1c));e.1W();e.1U=\'1V-35\';e.36(5.V,5.x,5.y);e.37(5.V,5.x,5.y);e.1W();e.38()}4.7.1P=1m(f(){4.1r(a)},20)};k.B.1f=f(x,y){o a,M,10,16,i,r,u,4;4=s;a=4.7.1L||[];1d(i=r=0,u=a.1l;0<=u?r<u:r>u;i=0<=u?++r:--r){10=a[i].x-x;16=a[i].y-y;M=v.1S(10*10+16*16);m(M<=4.A.8){4.7.21=a[i];1b 1y}}1b 1i};k.B.1n=f(x,y,a){o b;m(s.1f(x,y)){b=\'3d\'}L{b=\'3e\'}a.X.3f=b};k.B.1v=f(b){o c,4;4=s;c=d.E;c.T(\'3h\',f(a){o x,y;x=4.7.12=a.12;y=4.7.11=a.11;4.1n(x,y,b)});c.T(\'3i\',f(a){o x,y;x=a.12;y=a.11;m(4.1f(x,y)&&4.7.C.1l!==0){W.3j.3k=4.7.21.17}L{4.R(b)}});c.T(\'3l\',f(){4.R(b)});W.T(\'3m\',f(){4.R(b)});W.T(\'2l\',f(){4.1g(b);4.R(b)})};1b k})();',62,210,'||||_this|tmpBubble||cache|radius||||||ctx|function|sine|cosine|||Bubble|vX|if||var|vY|tmpBubbleB|_i|this|img|_ref|Math|num||||config|prototype|bubbles|cvs|body|dX|cvsHeight|dY|speed|styleEl|_j|else|distance|cvsWidth|avatarArr|xB|cvsEl|restart|vXb|addEventListener|zIndex|name|win|style|src|imgs|dx|clientY|clientX|avatar|yB|vYb|dy|url|avatarNum|randomZ|styles|return|height|for|width|inBubble|fullCvs|initialized|false|display|bubblesNum|length|setTimeout|setCursor|start|appendChild|createBubble|animateBubble|random|clearTimeout|wg|bind|createElement|100|true|margin|null|padding|bubble_canvas|push|setAttribute|none|top|clearRect|id|bubble|px|reverseBubbles|callback|styleSheet|scrollTop|animateSTO|createSTO|wait|sqrt|save|globalCompositeOperation|source|restore|startSTO|toWait|getContext||curBubble|concat|cssText|WanGe|blog|createTextNode|getElementById|http|wange|im|reverse|600||in|version|canvas|60000|html|console|log|resize|90|init|window|document|https|documentElement|github|position|absolute|com|apply|left|round|index|atan2|sin|cos|new|Image|fillStyle|000|globalAlpha|strokeStyle|fff|textBaseline|middle|textAlign|center|font|700|Microsoft|YaHei|SimSun|9999|beginPath|arc|PI|fill|clip|offsetWidth|offsetHeight|atop|scale|drawImage|wange1228|over|fillText|strokeText|closePath|type|text|shift|css|pointer|default|cursor|author|mousemove|mousedown|location|href|keydown|scroll|block'.split('|'),0,{}))
+/*
+ @name wg-bubble
+ @url https://github.com/wange1228/wg-bubble
+ @author WanGe
+ @blog http://wange.im
+ @version 2.4
+*/
+var Bubble,
+  __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
+
+Bubble = (function() {
+  var doc, win;
+
+  win = window;
+
+  doc = document;
+
+  function Bubble() {
+    this.inBubble = __bind(this.inBubble, this);
+    this.animateBubble = __bind(this.animateBubble, this);
+    this.createBubble = __bind(this.createBubble, this);
+    this.fullCvs = __bind(this.fullCvs, this);
+    this.restart = __bind(this.restart, this);
+    this.start = __bind(this.start, this);
+    this.init = __bind(this.init, this);    this.config = {
+      wait: 60000,
+      radius: 90,
+      avatar: [],
+      speed: 6,
+      callback: function() {
+        win.console && console.log('@name wg-bubble' + '\n' + '@url https://github.com/wange1228/wg-bubble' + '\n' + '@author WanGe' + '\n' + '@blog http://wange.im' + '\n' + '@version 2.4');
+      }
+    };
+    this.cache = {};
+  }
+
+  Bubble.initialized = false;
+
+  Bubble.prototype.init = function(params) {
+    var config, cvs, cvsEl, i, styleEl, styles;
+    if (params == null) params = this.config;
+    if (Bubble.initialized) return null;
+    Bubble.initialized = true;
+    config = this.config;
+    for (i in params) {
+      config[i] = params[i] || config[i];
+    }
+    cvsEl = doc.createElement('canvas');
+    styleEl = doc.createElement('style');
+    styles = 'html,body{width:100%;height:100%;margin:0;padding:0;}' + '#bubble_canvas{display:none;margin:0;padding:0;position:absolute;top:0;left:0;z-index:9999;}';
+    cvsEl.id = 'bubble_canvas';
+    styleEl.type = 'text/css';
+    if (styleEl.styleSheet) {
+      styleEl.styleSheet.cssText = styles;
+    } else {
+      styleEl.appendChild(doc.createTextNode(styles));
+    }
+    doc.body.appendChild(cvsEl);
+    doc.body.appendChild(styleEl);
+    cvs = doc.getElementById(cvsEl.id);
+    if (cvs && cvs.getContext) {
+      this.ctx = cvs.getContext('2d');
+      this.fullCvs(cvs);
+      this.start(cvs);
+      this.bind(cvs);
+    }
+  };
+
+  Bubble.prototype.start = function(cvs) {
+    var _this = this;
+    this.cache.bubbles = [];
+    this.cache.imgs = [];
+    this.cache.bubblesNum = 0;
+    this.cache.toWait = this.config.wait;
+    this.cache.avatar = this.config.avatar.concat();
+    clearTimeout(this.cache.startSTO);
+    clearTimeout(this.cache.createSTO);
+    clearTimeout(this.cache.animateSTO);
+    this.cache.startSTO = setTimeout(function() {
+      var scrollTop;
+      scrollTop = doc.body.scrollTop || doc.documentElement.scrollTop;
+      cvs.style.display = 'block';
+      cvs.style.top = scrollTop + 'px';
+      _this.createBubble();
+      _this.animateBubble(cvs);
+      _this.config.callback.apply(_this);
+    }, this.cache.toWait);
+  };
+
+  Bubble.prototype.restart = function(cvs) {
+    cvs.style.display = 'none';
+    this.ctx.clearRect(0, 0, this.cvsWidth, this.cvsHeight);
+    this.start(cvs);
+  };
+
+  Bubble.prototype.fullCvs = function(cvs) {
+    this.cvsWidth = doc.body.offsetWidth;
+    this.cvsHeight = doc.body.offsetHeight;
+    cvs.setAttribute('width', this.cvsWidth);
+    cvs.setAttribute('height', this.cvsHeight);
+  };
+
+  Bubble.prototype.createBubble = function() {
+    var avatar, avatarArr, avatarNum, radius, speed,
+      _this = this;
+    radius = this.config.radius;
+    speed = this.config.speed;
+    avatar = this.cache.avatar;
+    avatarArr = avatar.shift();
+    avatarNum = avatar.length;
+    this.cache.bubblesNum++;
+    this.cache.bubbles.push({
+      x: radius,
+      y: this.cvsHeight - radius,
+      zIndex: avatarNum,
+      vX: Math.random() * speed,
+      vY: Math.random() * speed - speed / 2,
+      src: avatarArr.src,
+      url: avatarArr.url,
+      name: avatarArr.name
+    });
+    this.cache.reverseBubbles = this.cache.bubbles.concat().reverse();
+    if (avatarNum !== 0) {
+      this.cache.createSTO = setTimeout(function() {
+        _this.createBubble();
+      }, 600);
+    }
+  };
+
+  Bubble.prototype.animateBubble = function(cvs) {
+    var angle, bubbles, cosine, ctx, dX, dY, distance, i, img, j, num, radius, randomZ, sine, tmpBubble, tmpBubbleB, vX, vXb, vY, vYb, x, xB, y, yB, _ref,
+      _this = this;
+    ctx = this.ctx;
+    radius = this.config.radius;
+    num = this.cache.bubblesNum;
+    bubbles = this.cache.bubbles;
+    ctx.clearRect(0, 0, this.cvsWidth, this.cvsHeight);
+    this.setCursor(this.cache.clientX, this.cache.clientY, cvs);
+    for (i = 0; 0 <= num ? i < num : i > num; 0 <= num ? i++ : i--) {
+      tmpBubble = bubbles[i];
+      for (j = _ref = i + 1; _ref <= num ? j < num : j > num; _ref <= num ? j++ : j--) {
+        tmpBubbleB = bubbles[j];
+        randomZ = Math.round(Math.random());
+        if (tmpBubble.zIndex === tmpBubbleB.zIndex) {
+          dX = tmpBubbleB.x - tmpBubble.x;
+          dY = tmpBubbleB.y - tmpBubble.y;
+          distance = Math.sqrt(dX * dX + dY * dY);
+          if (distance < 2 * radius) {
+            angle = Math.atan2(dY, dX);
+            sine = Math.sin(angle);
+            cosine = Math.cos(angle);
+            x = 0;
+            y = 0;
+            xB = dX * cosine + dY * sine;
+            yB = dY * cosine - dX * sine;
+            vX = tmpBubble.vX * cosine + tmpBubble.vY * sine;
+            vY = tmpBubble.vY * cosine - tmpBubble.vX * sine;
+            vXb = tmpBubbleB.vX * cosine + tmpBubbleB.vY * sine;
+            vYb = tmpBubbleB.vY * cosine - tmpBubbleB.vX * sine;
+            vX *= -1;
+            vXb *= -1;
+            xB = x + 2 * radius;
+            tmpBubble.x = tmpBubble.x + (x * cosine - y * sine);
+            tmpBubble.y = tmpBubble.y + (y * cosine + x * sine);
+            tmpBubbleB.x = tmpBubble.x + (xB * cosine - yB * sine);
+            tmpBubbleB.y = tmpBubble.y + (yB * cosine + xB * sine);
+            tmpBubble.vX = vX * cosine - vY * sine;
+            tmpBubble.vY = vY * cosine + vX * sine;
+            tmpBubbleB.vX = vXb * cosine - vYb * sine;
+            tmpBubbleB.vY = vYb * cosine + vXb * sine;
+          }
+        }
+      }
+      tmpBubble.x += tmpBubble.vX;
+      tmpBubble.y += tmpBubble.vY;
+      if (tmpBubble.x - radius < 0) {
+        tmpBubble.x = radius;
+        tmpBubble.vX *= -1;
+      } else if (tmpBubble.x + radius > this.cvsWidth) {
+        tmpBubble.x = this.cvsWidth - radius;
+        tmpBubble.vX *= -1;
+        tmpBubble.zIndex = randomZ;
+      }
+      if (tmpBubble.y - radius < 0) {
+        tmpBubble.y = radius;
+        tmpBubble.vY *= -1;
+        tmpBubble.zIndex = randomZ;
+      } else if (tmpBubble.y + radius > this.cvsHeight) {
+        tmpBubble.y = this.cvsHeight - radius;
+        tmpBubble.vY *= -1;
+      }
+      if (this.cache.imgs[i]) {
+        img = this.cache.imgs[i];
+      } else {
+        img = new Image();
+        img.src = tmpBubble.src;
+        this.cache.imgs.push(img);
+      }
+      ctx.fillStyle = '#000';
+      ctx.globalAlpha = 0.9;
+      ctx.strokeStyle = '#fff';
+      ctx.textBaseline = 'middle';
+      ctx.textAlign = 'center';
+      ctx.font = '700 ' + radius * 0.3 + 'px "Microsoft YaHei",SimSun';
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(tmpBubble.x, tmpBubble.y, radius, 0, Math.PI * 2, false);
+      ctx.fill();
+      ctx.clip();
+      ctx.globalCompositeOperation = 'source-atop';
+      ctx.save();
+      ctx.scale(radius * 2 / img.width, radius * 2 / img.height);
+      ctx.drawImage(img, (tmpBubble.x - radius) / (radius * 2 / img.width), (tmpBubble.y - radius) / (radius * 2 / img.height));
+      ctx.restore();
+      ctx.globalCompositeOperation = 'source-over';
+      ctx.fillText(tmpBubble.name, tmpBubble.x, tmpBubble.y);
+      ctx.strokeText(tmpBubble.name, tmpBubble.x, tmpBubble.y);
+      ctx.restore();
+      ctx.closePath();
+    }
+    this.cache.animateSTO = setTimeout(function() {
+      _this.animateBubble(cvs);
+    }, 20);
+  };
+
+  Bubble.prototype.inBubble = function(x, y) {
+    var bubbles, distance, dx, dy, i, _ref;
+    bubbles = this.cache.reverseBubbles || [];
+    for (i = 0, _ref = bubbles.length; 0 <= _ref ? i < _ref : i > _ref; 0 <= _ref ? i++ : i--) {
+      dx = bubbles[i].x - x;
+      dy = bubbles[i].y - y;
+      distance = Math.sqrt(dx * dx + dy * dy);
+      if (distance <= this.config.radius) {
+        this.cache.curBubble = bubbles[i];
+        return true;
+      }
+    }
+    return false;
+  };
+
+  Bubble.prototype.setCursor = function(x, y, cvs) {
+    var cursor;
+    if (this.inBubble(x, y)) {
+      cursor = 'pointer';
+    } else {
+      cursor = 'default';
+    }
+    cvs.style.cursor = cursor;
+  };
+
+  Bubble.prototype.bind = function(cvs) {
+    var body,
+      _this = this;
+    body = doc.body;
+    body.addEventListener('mousemove', function(ev) {
+      var x, y;
+      x = _this.cache.clientX = ev.clientX;
+      y = _this.cache.clientY = ev.clientY;
+      _this.setCursor(x, y, cvs);
+    });
+    body.addEventListener('mousedown', function(ev) {
+      var x, y;
+      x = ev.clientX;
+      y = ev.clientY;
+      if (_this.inBubble(x, y) && _this.cache.bubbles.length !== 0) {
+        win.location.href = _this.cache.curBubble.url;
+      } else {
+        _this.restart(cvs);
+      }
+    });
+    body.addEventListener('keydown', function() {
+      _this.restart(cvs);
+    });
+    win.addEventListener('scroll', function() {
+      _this.restart(cvs);
+    });
+    win.addEventListener('resize', function() {
+      _this.fullCvs(cvs);
+      _this.restart(cvs);
+    });
+  };
+
+  return Bubble;
+
+})();
